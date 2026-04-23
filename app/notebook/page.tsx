@@ -11,7 +11,7 @@ import {
   type DragEndEvent,
   type DragStartEvent,
 } from "@dnd-kit/core";
-import MingPomodoroDial from "@/components/ming/PomodoroDial";
+import LuxeDial from "@/components/notebook/LuxeDial";
 import ActiveCard from "@/components/ActiveCard";
 import CalendarSection from "@/components/briefing/CalendarSection";
 import BriefingPanel from "@/components/briefing/BriefingPanel";
@@ -439,20 +439,8 @@ function NotebookLayout({
                 <ActiveCard />
               </div>
 
-              {/* Dial — centered, scaled to fit */}
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  padding: "0.5rem 0",
-                  flexShrink: 0,
-                }}
-              >
-                <div style={{ transform: "scale(0.6)", transformOrigin: "center top" }}>
-                  <MingPomodoroDial />
-                </div>
-              </div>
+              {/* Dial */}
+              <LuxeDial />
 
               {/* Now / Next / Walk tally */}
               <NowNextList onOpenKanban={() => setDrawerOpen(true)} />

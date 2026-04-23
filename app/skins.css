@@ -147,6 +147,16 @@
   border-color: var(--border);
 }
 
+/* CollapsibleSection: lighter feel in Luxe */
+[data-skin="luxe"] {
+  --font-label: var(--font-inter), Inter, "Helvetica Neue", sans-serif;
+  --label-size: 0.68rem;
+  --label-weight: 600;
+  --label-tracking: 0.07em;
+  --section-radius: 12px;
+  --section-shadow: 0 1px 4px rgba(10, 102, 64, 0.05);
+}
+
 /* ── Linen — warm light mode ─────────────────────────────────────── */
 [data-skin="linen"] {
   --bg: #f5f0e8;

@@ -26,19 +26,21 @@ export default function ActiveCard() {
   const frameStyle: React.CSSProperties = {
     textAlign: "center",
     padding: "0.8rem 2rem",
-    borderRadius: 6,
+    borderRadius: 12,
     border: isOver
       ? "1.5px solid var(--accent)"
       : active
       ? "1.5px solid var(--accent-dim)"
       : "1.5px dashed var(--border)",
     background: isOver
-      ? "rgba(196, 138, 60, 0.1)"
+      ? "rgba(var(--accent-rgb, 196 138 60) / 0.08)"
       : active
-      ? "rgba(196, 138, 60, 0.04)"
+      ? "var(--bg-card)"
       : "transparent",
     transition: "border-color 0.2s, background 0.2s, box-shadow 0.2s",
-    boxShadow: active ? "0 0 20px rgba(196, 138, 60, 0.06)" : "none",
+    boxShadow: active
+      ? "0 2px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04)"
+      : "none",
     minWidth: "20rem",
   };
 
@@ -61,23 +63,23 @@ export default function ActiveCard() {
     return (
       <div ref={setNodeRef} style={frameStyle}>
         <div style={{
-          fontFamily: '"Futura", "Trebuchet MS", sans-serif',
-          fontSize: "0.55rem", letterSpacing: "0.3em", textTransform: "uppercase",
+          fontSize: "0.58rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase",
           color: "var(--accent)", marginBottom: "0.3rem",
+          fontFamily: "var(--font-inter), Inter, 'Futura', sans-serif",
         }}>
           {displayLabel ? `Now · ${displayLabel}` : "Now"}
         </div>
         <div style={{
-          fontSize: "1.15rem", fontWeight: 300, color: "var(--ink)",
-          lineHeight: 1.35, maxWidth: "28rem", margin: "0 auto",
+          fontSize: "1.05rem", fontWeight: 400, color: "var(--ink)",
+          lineHeight: 1.4, maxWidth: "28rem", margin: "0 auto",
+          fontFamily: "var(--font-inter), Inter, sans-serif",
         }}>
           {active.title}
         </div>
         {extra > 0 && (
           <div style={{
-            marginTop: "0.25rem", fontSize: "0.5rem", color: "var(--ink-faint)",
-            fontFamily: '"Futura", "Trebuchet MS", sans-serif',
-            letterSpacing: "0.15em", textTransform: "uppercase",
+            marginTop: "0.25rem", fontSize: "0.62rem", color: "var(--ink-faint)",
+            fontFamily: "var(--font-inter), Inter, sans-serif",
           }}>
             +{extra} more in progress
           </div>
@@ -89,17 +91,18 @@ export default function ActiveCard() {
   return (
     <div ref={setNodeRef} style={frameStyle}>
       <div style={{
-        fontFamily: '"Futura", "Trebuchet MS", sans-serif',
-        fontSize: "0.55rem", letterSpacing: "0.3em", textTransform: "uppercase",
+        fontSize: "0.58rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase",
         color: isOver ? "var(--accent)" : "var(--ink-faint)",
         marginBottom: "0.15rem",
         transition: "color 0.15s",
+        fontFamily: "var(--font-inter), Inter, 'Futura', sans-serif",
       }}>
         Now
       </div>
       <div style={{
-        fontSize: "0.8rem", fontWeight: 300, lineHeight: 1.4,
+        fontSize: "0.82rem", fontWeight: 400, lineHeight: 1.4,
         color: isOver ? "var(--accent)" : "var(--ink-dim)",
+        fontFamily: "var(--font-inter), Inter, sans-serif",
       }}>
         {isOver
           ? "Drop to start working"

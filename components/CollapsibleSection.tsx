@@ -44,8 +44,9 @@ export default function CollapsibleSection({
       style={{
         background: "var(--bg-card)",
         border: "1px solid var(--border)",
-        borderRadius: 4,
+        borderRadius: "var(--section-radius, 4px)",
         overflow: "hidden",
+        boxShadow: "var(--section-shadow, none)",
       }}
     >
       <button
@@ -83,10 +84,10 @@ export default function CollapsibleSection({
           </span>
           <span
             style={{
-              fontFamily: '"Futura", "Trebuchet MS", sans-serif',
-              fontSize: "0.65rem",
-              fontWeight: 700,
-              letterSpacing: "0.2em",
+              fontFamily: 'var(--font-label, "Futura", "Trebuchet MS", sans-serif)',
+              fontSize: "var(--label-size, 0.65rem)",
+              fontWeight: "var(--label-weight, 700)" as React.CSSProperties["fontWeight"],
+              letterSpacing: "var(--label-tracking, 0.2em)",
               textTransform: "uppercase",
               color: accentColor ?? "var(--accent)",
             }}
