@@ -1,0 +1,155 @@
+/*
+ * Ming variant — design language inherited from `the-still`
+ * (Ming Zhao's distillery aesthetic in HOMEGA). Warm umber,
+ * brass amber accent, serif body, Futura uppercase labels.
+ *
+ * All tokens scoped under `.ming-root` so they don't leak into
+ * the default ops-display variant on `/`.
+ */
+.ming-root {
+  --bg: #0f0d0a;
+  --bg-card: #1a1612;
+  --bg-card-hover: #221d17;
+  --ink: #e9dfce;
+  --ink-dim: #bfb49e;
+  --ink-faint: #8a7d6b;
+  --accent: #c48a3c;
+  --accent-dim: #7a5622;
+  --border: #2a241c;
+  --work: #c48a3c;
+  --short-break: #8a9a6b;
+  --long-break: #6b9a8a;
+
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+.ming-root .ming-bg {
+  /* Subtle warm vignette — no character image needed; the paper itself is the texture. */
+  background-image:
+    radial-gradient(ellipse at 50% 30%, rgba(196, 138, 60, 0.08), transparent 60%),
+    linear-gradient(to bottom, #100d0a 0%, #0b0907 100%);
+  min-height: 100vh;
+}
+
+.ming-root .ming-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+}
+
+.ming-root .ming-h1 {
+  font-family: "Futura", "Trebuchet MS", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  font-size: 2rem;
+  margin: 0 0 0.4rem;
+  text-transform: uppercase;
+}
+.ming-root .ming-h2 {
+  font-family: "Futura", "Trebuchet MS", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  color: var(--ink-dim);
+  margin: 3rem 0 0.6rem;
+}
+.ming-root .ming-tagline {
+  color: var(--ink-dim);
+  font-style: italic;
+  margin: 0 0 1rem;
+}
+.ming-root .ming-section-sub {
+  color: var(--ink-faint);
+  font-size: 0.85rem;
+  font-style: italic;
+  margin: -0.4rem 0 1.2rem;
+}
+
+/* Brass-plate buttons. Restraint, not enthusiasm. */
+.ming-root .ming-btn {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent-dim);
+  border-radius: 3px;
+  padding: 0.55rem 1.4rem;
+  font-family: "Futura", "Trebuchet MS", sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.ming-root .ming-btn:hover {
+  background: var(--accent-dim);
+  color: var(--ink);
+}
+.ming-root .ming-btn-quiet {
+  background: transparent;
+  color: var(--ink-faint);
+  border: none;
+  padding: 0.5rem 1rem;
+  font-family: "Futura", "Trebuchet MS", sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.ming-root .ming-btn-quiet:hover {
+  color: var(--ink);
+}
+
+/* Vessel cards — each a barrel resting on a shelf. */
+.ming-root .ming-card {
+  display: block;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.1rem 1.3rem;
+  transition: background 0.15s, border-color 0.15s;
+}
+.ming-root .ming-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--accent-dim);
+}
+.ming-root .ming-card .ming-card-label {
+  font-family: "Futura", "Trebuchet MS", sans-serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-size: 0.78rem;
+  margin-bottom: 0.4rem;
+}
+.ming-root .ming-card .ming-card-title {
+  color: var(--ink);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.ming-root .ming-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+}
+@media (min-width: 720px) {
+  .ming-root .ming-card-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.ming-root .ming-divider {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 3rem 0 0;
+}
+
+.ming-root .ming-tabular {
+  font-variant-numeric: tabular-nums;
+}

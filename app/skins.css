@@ -1,0 +1,167 @@
+/*
+ * Skin overrides — applied via data-skin attribute on <body>.
+ *
+ * Ming is the default (defined in ming.css via .ming-root).
+ * Additional skins override the same CSS variables so every
+ * component picks them up automatically.
+ *
+ * To add a skin: define a [data-skin="your-id"] block with all vars.
+ */
+
+/* ── PipBoy — retro green CRT terminal ──────────────────────────── */
+[data-skin="pipboy"] {
+  --bg: #0a0e0a;
+  --bg-card: #0d160d;
+  --bg-card-hover: #142014;
+  --ink: #33ff33;
+  --ink-dim: #22bb22;
+  --ink-faint: #117711;
+  --accent: #33ff33;
+  --accent-dim: #117711;
+  --border: #1a2e1a;
+  --work: #33ff33;
+  --short-break: #22ccaa;
+  --long-break: #22aacc;
+
+  background: var(--bg) !important;
+  color: var(--ink) !important;
+  font-family: "Courier New", "Consolas", "Liberation Mono", monospace !important;
+  text-shadow: 0 0 6px rgba(51, 255, 51, 0.3);
+}
+
+/* CRT scanline overlay */
+[data-skin="pipboy"]::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+}
+
+/* Subtle screen glow vignette */
+[data-skin="pipboy"]::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(51, 255, 51, 0.03) 0%,
+    transparent 60%
+  );
+}
+
+/* ── Luxe — Meridian. Banker green on white. Competence, money, clarity. ── */
+[data-skin="luxe"] {
+  --bg: #F4F7F5;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #ECF5F0;
+  --ink: #0A1A10;
+  --ink-dim: #3A5247;
+  --ink-faint: #7A9688;
+  --accent: #0D6B3F;
+  --accent-dim: #CBE8D8;
+  --accent-gold: #C5A028;
+  --border: #D4E6DC;
+  --work: #0D6B3F;
+  --short-break: #1A72B0;
+  --long-break: #6352A8;
+
+  background: var(--bg) !important;
+  color: var(--ink) !important;
+  font-family: var(--font-inter), "Inter", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Cards: paper on a surface, not boxes on a grid */
+[data-skin="luxe"] .ming-card {
+  background: var(--bg-card);
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 1px 4px rgba(10, 102, 64, 0.06), 0 2px 12px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+[data-skin="luxe"] .ming-card:hover {
+  background: var(--bg-card);
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(10, 102, 64, 0.12), 0 1px 4px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+/* Headings: confident but not shouting */
+[data-skin="luxe"] .ming-h1 {
+  font-family: var(--font-inter), "Inter", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: var(--ink);
+}
+[data-skin="luxe"] .ming-h2 {
+  font-family: var(--font-inter), "Inter", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--accent);
+}
+
+/* Buttons: green plate, not brass plate */
+[data-skin="luxe"] .ming-btn {
+  font-family: var(--font-inter), "Inter", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  color: var(--accent);
+  border-color: var(--accent);
+}
+[data-skin="luxe"] .ming-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+[data-skin="luxe"] .ming-btn-quiet {
+  font-family: var(--font-inter), "Inter", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  font-size: 0.82rem;
+  border-radius: 6px;
+}
+[data-skin="luxe"] .ming-btn-quiet:hover {
+  color: var(--accent);
+}
+
+/* Divider: light green-grey line */
+[data-skin="luxe"] .ming-divider {
+  border-color: var(--border);
+}
+
+/* ── Linen — warm light mode ─────────────────────────────────────── */
+[data-skin="linen"] {
+  --bg: #f5f0e8;
+  --bg-card: #fffdf8;
+  --bg-card-hover: #f0ebe0;
+  --ink: #2c2418;
+  --ink-dim: #6b5d4d;
+  --ink-faint: #9a8d7d;
+  --accent: #b07830;
+  --accent-dim: #d4b888;
+  --border: #e0d8c8;
+  --work: #b07830;
+  --short-break: #5a8a5a;
+  --long-break: #5a7a8a;
+
+  background: var(--bg) !important;
+  color: var(--ink) !important;
+}
