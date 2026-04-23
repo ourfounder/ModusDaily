@@ -108,9 +108,11 @@ export default function LuxeDial({ large = false, onToggleSize }: { large?: bool
 
   const primaryLabel =
     t.mode === "idle" ? "Begin" :
-    !t.running ? "Resume" :
+    t.mode === "shortBreak" && !t.running ? "Start Break" :
+    t.mode === "longBreak" && !t.running ? "Start Break" :
     t.mode === "shortBreak" ? "Take a break" :
     t.mode === "longBreak" ? "Long break" :
+    !t.running ? "Resume" :
     "Pause";
 
   return (
