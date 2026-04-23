@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   DndContext,
   DragOverlay,
@@ -120,6 +121,7 @@ function DailyLayout({
   const [dragCardNumber, setDragCardNumber] = useState<number | null>(null);
   const { log: logWork } = useWorkLog();
   const resize = useResizableColumns();
+  const router = useRouter();
 
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 5 } })
@@ -216,17 +218,60 @@ function DailyLayout({
               padding: "0.6rem 0.9rem",
             }}
           >
-            <div
-              style={{
-                fontFamily: '"Futura", "Trebuchet MS", sans-serif',
-                fontSize: "0.6rem",
-                fontWeight: 700,
-                letterSpacing: "0.3em",
-                textTransform: "uppercase",
-                color: "var(--ink)",
-              }}
-            >
-              ModusDaily
+            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+              <div
+                style={{
+                  fontFamily: '"Futura", "Trebuchet MS", sans-serif',
+                  fontSize: "0.6rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.3em",
+                  textTransform: "uppercase",
+                  color: "var(--ink)",
+                }}
+              >
+                ModusDaily
+              </div>
+              <div style={{ display: "flex", borderRadius: 6, overflow: "hidden", border: "1px solid var(--border)" }}>
+                <button
+                  type="button"
+                  style={{
+                    padding: "0.2rem 0.55rem",
+                    border: "none",
+                    background: "var(--accent-dim)",
+                    color: "var(--accent)",
+                    fontFamily: '"Futura", "Trebuchet MS", sans-serif',
+                    fontSize: "0.52rem",
+                    fontWeight: 700,
+                    cursor: "default",
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Dashboard
+                </button>
+                <button
+                  type="button"
+                  onClick={() => router.push("/notebook")}
+                  style={{
+                    padding: "0.2rem 0.55rem",
+                    border: "none",
+                    borderLeft: "1px solid var(--border)",
+                    background: "transparent",
+                    color: "var(--ink-faint)",
+                    fontFamily: '"Futura", "Trebuchet MS", sans-serif',
+                    fontSize: "0.52rem",
+                    fontWeight: 700,
+                    cursor: "pointer",
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    transition: "color 0.15s",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--ink)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--ink-faint)")}
+                >
+                  Notebook
+                </button>
+              </div>
             </div>
             {config && (
               <DayTypeBadge config={config} onClick={onPickDay} />
