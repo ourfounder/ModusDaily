@@ -92,18 +92,39 @@ export default function ClockPanel({
         </span>
       </div>
 
-      {/* Date */}
-      <div
-        style={{
-          marginTop: "0.3rem",
-          fontFamily: "var(--font-inter), Inter, sans-serif",
-          fontSize: "0.8rem",
-          fontWeight: 400,
-          color: "var(--ink-dim)",
-          letterSpacing: "0.02em",
-        }}
-      >
-        {dayStr}
+      {/* Date + size toggle */}
+      <div style={{ marginTop: "0.3rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div
+          style={{
+            fontFamily: "var(--font-inter), Inter, sans-serif",
+            fontSize: "0.8rem",
+            fontWeight: 400,
+            color: "var(--ink-dim)",
+            letterSpacing: "0.02em",
+          }}
+        >
+          {dayStr}
+        </div>
+        {onToggleSize && (
+          <button
+            type="button"
+            onClick={onToggleSize}
+            title={large ? "Shrink clock" : "Enlarge clock"}
+            style={{
+              background: "none",
+              border: "1px solid var(--border)",
+              borderRadius: 6,
+              padding: "0.1rem 0.4rem",
+              fontSize: "0.65rem",
+              color: "var(--ink-faint)",
+              cursor: "pointer",
+              fontFamily: "var(--font-inter), Inter, sans-serif",
+              letterSpacing: "0.04em",
+            }}
+          >
+            {large ? "▼" : "▲"}
+          </button>
+        )}
       </div>
 
       {/* Divider */}
