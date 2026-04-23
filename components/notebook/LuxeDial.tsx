@@ -10,11 +10,10 @@ import { usePomodoroContext } from "@/lib/PomodoroContext";
 import { useWalkLog } from "@/lib/useWalkLog";
 import { useWorkLog } from "@/lib/useWorkLog";
 
-// Intentionally small — the dial serves, it doesn't dominate
-const SIZE = 260;
-const CX = SIZE / 2;
-const R = 110;
-const CIRC = 2 * Math.PI * R;
+const SIZE_NORMAL = 220;
+const SIZE_LARGE = 300;
+const R_NORMAL = 92;
+const R_LARGE = 126;
 
 type ModeConfig = { stroke: string; glow: string; label: string };
 
@@ -73,10 +72,15 @@ function CtrlButton({
   );
 }
 
-export default function LuxeDial() {
+export default function LuxeDial({ large = false, onToggleSize }: { large?: boolean; onToggleSize?: () => void }) {
+  const SIZE = large ? SIZE_LARGE : SIZE_NORMAL;
+  const CX = SIZE / 2;
+  const R = large ? R_LARGE : R_NORMAL;
+  const CIRC = 2 * Math.PI * R;
+
   const t = usePomodoroContext();
   const m = MODE[t.mode];
-  const dashoffset = useMemo(() => CIRC * (1 - t.progress), [t.progress]);
+  const dashoffset = useMemo(() => CIRC * (1 - t.progress), [CIRC, t.progress]);
 
   const { log: logWalk, walkedCount, totalBreaks } = useWalkLog();
   const { log: logWork } = useWorkLog();
@@ -277,6 +281,9 @@ export default function LuxeDial() {
         )}
         <CtrlButton onClick={t.reset}>Reset</CtrlButton>
         <CtrlButton onClick={t.skip}>Skip</CtrlButton>
+        {onToggleSize && (
+          <CtrlButton onClick={onToggleSize}>{large ? "▼" : "▲"}</CtrlButton>
+        )}
       </div>
     </div>
   );

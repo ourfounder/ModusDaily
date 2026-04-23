@@ -275,6 +275,7 @@ function NotebookLayout({
   const [briefingCollapsed, setBriefingCollapsed] = useState(false);
   const [kanbanCollapsed, setKanbanCollapsed] = useState(false);
   const [clockLarge, setClockLarge] = useState(true);
+  const [dialLarge, setDialLarge] = useState(false);
   const { log: logWork } = useWorkLog();
   const router = useRouter();
 
@@ -416,7 +417,7 @@ function NotebookLayout({
               <div style={{ padding: "0.65rem 1rem 0" }}>
                 <ActiveCard />
               </div>
-              <LuxeDial />
+              <LuxeDial large={dialLarge} onToggleSize={() => setDialLarge(v => !v)} />
               <NowNextList />
             </div>
           </section>
