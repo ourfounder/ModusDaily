@@ -4,9 +4,9 @@ import { useMemo, useEffect, useRef, useState } from "react";
 import {
   POMOS_PER_LONG_BREAK,
   formatPomodoroTime,
-  usePomodoro,
   type PomodoroMode,
 } from "@/lib/usePomodoro";
+import { usePomodoroContext } from "@/lib/PomodoroContext";
 import { useWalkLog } from "@/lib/useWalkLog";
 import { useWorkLog } from "@/lib/useWorkLog";
 
@@ -74,7 +74,7 @@ function CtrlButton({
 }
 
 export default function LuxeDial() {
-  const t = usePomodoro();
+  const t = usePomodoroContext();
   const m = MODE[t.mode];
   const dashoffset = useMemo(() => CIRC * (1 - t.progress), [t.progress]);
 

@@ -33,7 +33,15 @@ function getNextEvent(events: CalendarEvent[], now: Date): { event: CalendarEven
   return closest;
 }
 
-export default function ClockPanel({ events }: { events: CalendarEvent[] }) {
+export default function ClockPanel({
+  events,
+  large = false,
+  onToggleSize,
+}: {
+  events: CalendarEvent[];
+  large?: boolean;
+  onToggleSize?: () => void;
+}) {
   const [now, setNow] = useState(() => new Date());
 
   useEffect(() => {
@@ -53,16 +61,20 @@ export default function ClockPanel({ events }: { events: CalendarEvent[] }) {
     <div style={{ padding: "1.8rem 1.6rem 1.4rem" }}>
       {/* Big clock */}
       <div
+        onClick={onToggleSize}
+        title={onToggleSize ? (large ? "Shrink clock" : "Enlarge clock") : undefined}
         style={{
           fontFamily: "var(--font-inter), Inter, sans-serif",
           fontWeight: 300,
-          fontSize: "5.5rem",
+          fontSize: large ? "8rem" : "5.5rem",
           lineHeight: 1,
           letterSpacing: "-0.03em",
           color: "var(--ink)",
           display: "flex",
           alignItems: "baseline",
           gap: "0.4rem",
+          cursor: onToggleSize ? "pointer" : "default",
+          transition: "font-size 0.2s ease",
         }}
       >
         <span style={{ fontVariantNumeric: "tabular-nums" }}>
